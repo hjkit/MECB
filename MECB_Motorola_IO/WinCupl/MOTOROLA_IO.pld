@@ -1,12 +1,12 @@
-Name            MECB_ChipSelect_Motorola_IO;
-Partno          U1;
-Date            11/2024;
-Revision        01;
-Designer        Greg;
-Company         Digicool Things;
-Assembly        None;
-Location        None;
-Device          g16v8as;
+Name       MOTOROLA_IO.pld;
+Partno     U1;
+Date       10/2026;
+Revision   01;
+Designer   Greg;
+Company    Digicool Things;
+Assembly   None;
+Location   None;
+Device     g16v8as;
 
 /****************************************************************/
 /*                                                              */
@@ -23,23 +23,17 @@ Device          g16v8as;
  *
  */
 
-Pin 1 	= a3;
-Pin 2 	= a4;
-Pin 3 	= a5;
-Pin 4 	= a6;
-Pin 19	= a7;
-
-Pin 18 = a11;
-Pin 7 	= a12;
-Pin 12 = a13;
-Pin 5 	= a14;
-Pin 13 = a15;
-
-Pin 9 	= clk;
-Pin 8 	= !iorq;
+Pin 9	 = clk;
+Pin 8  = !iorq;
 Pin 11 = !mreq;
-Pin 6 	= !rd; 
+Pin 6  = !rd; 
 Pin 17 = !wr;
+
+Pin [19, 4, 3, 2, 1] = [a7..a3];
+Pin [13, 5, 12, 7, 18] = [a15..a11];
+
+field io_addr = [a7..a3];
+field mem_addr = [a15..a11];
 
 /*
  *
@@ -66,10 +60,9 @@ Pin 16 = !cs2;
  *
  */
 
-cs0 = iorq & !a7 & !a6 & !a5 & !a4 & a3;
-cs1 = iorq & !a7 & !a6 & !a5 & !a4 & !a3;
-cs2 = iorq & !a7 & !a6 & !a5 & a4 & !a3;
-
+cs0 = iorq & io_addr:[08..0F];
+cs1 = iorq & io_addr:[00..07];
+cs2 = iorq & io_addr:[10..17];
 
 /*
  *
@@ -84,5 +77,5 @@ cs2 = iorq & !a7 & !a6 & !a5 & a4 & !a3;
 /*
 cs0 = 'b'0;
 cs1 = 'b'0;
-cs2 = clk & !a15 & !a14 & !a13 & a12;
+cs2 = clk & mem_addr:[1000..1FFF];
 */

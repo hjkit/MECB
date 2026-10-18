@@ -1,11 +1,11 @@
 
-CUPL(WM)        5.0a  Serial# 60008009
-Device          g16v8as  Library DLIB-h-40-2
-Created         Fri Nov 15 12:47:38 2024
-Name            MECB_ChipSelect_Motorola_IO
+CUPL(WM)        5.0a  Serial# MW-10400000
+Device          g16v8s  Library DLIB-h-40-9
+Created         Mon Oct 19 11:30:19 2026
+Name            MOTOROLA_IO.pld
 Partno          U1
 Revision        01
-Date            11/2024
+Date            10/2026
 Designer        Greg
 Company         Digicool Things
 Assembly        None
@@ -20,4 +20,4 @@ Location        None
 *L02144 11111111111111111111111111111111
 *L02176 111111111111111110
 *C0D2A
-*7EB5
+*79E8
